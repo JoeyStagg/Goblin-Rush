@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ffe0b05fkku7"]
+
+[ext_resource type="Texture2D" uid="uid://dc5icombtkxj6" path="res://textures/Gobby.png" id="1_iremp"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_was8j"]
+
+[node name="Enemy" type="CharacterBody2D"]
+physics_interpolation_mode = 1
+script = ExtResource("1_was8j")
+
+[node name="Gobby" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_iremp")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+path_max_distance = 50.0
+simplify_path = true
+avoidance_enabled = true
+radius = 30.0
+neighbor_distance = 100.0
+time_horizon_agents = 5.0
+time_horizon_obstacles = 1.0
+debug_enabled = true
