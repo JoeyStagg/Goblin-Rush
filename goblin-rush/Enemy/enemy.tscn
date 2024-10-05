@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ffe0b05fkku7"]
+[gd_scene load_steps=5 format=3 uid="uid://ffe0b05fkku7"]
 
 [ext_resource type="Texture2D" uid="uid://dc5icombtkxj6" path="res://textures/Gobby.png" id="1_iremp"]
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_was8j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g5n6q"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp60m"]
+size = Vector2(12, 12)
 
 [node name="Enemy" type="CharacterBody2D"]
 physics_interpolation_mode = 1
@@ -12,12 +19,27 @@ texture_filter = 3
 texture = ExtResource("1_iremp")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 30.0
-path_max_distance = 50.0
+path_desired_distance = 32.0
+target_desired_distance = 48.0
+path_max_distance = 128.0
 simplify_path = true
 avoidance_enabled = true
-radius = 30.0
-neighbor_distance = 100.0
-time_horizon_agents = 5.0
+radius = 8.0
+neighbor_distance = 128.0
+max_neighbors = 30
+time_horizon_agents = 3.0
 time_horizon_obstacles = 1.0
-debug_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g5n6q")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yp60m")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
