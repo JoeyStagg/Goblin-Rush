@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://byo88a6vt4kfp"]
+
+[ext_resource type="Script" path="res://level_test.gd" id="1_3nvrj"]
+[ext_resource type="PackedScene" path="res://Enemy/enemy.tscn" id="1_yy53l"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_s685e"]
+vertices = PackedVector2Array(389.961, 214, 10, 214, 10, 10, 389.039, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(399, 0, 400, 224, 0, 224, 0, 0)])
+
+[node name="LevelTest" type="Node2D"]
+script = ExtResource("1_3nvrj")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_s685e")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("1_yy53l")]
+position = Vector2(144, 60)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("1_yy53l")]
+position = Vector2(254, 42)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("1_yy53l")]
+position = Vector2(358, 164)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("1_yy53l")]
+position = Vector2(238, 130)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("1_yy53l")]
+position = Vector2(153, 179)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("1_yy53l")]
+position = Vector2(67, 117)
