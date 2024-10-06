@@ -12,6 +12,7 @@ script = ExtResource("1_3fvcc")
 [node name="arrow" type="Sprite2D" parent="."]
 texture_filter = 3
 texture = ExtResource("1_36fb8")
+flip_h = true
 
 [node name="arrow_dmg_box" type="Area2D" parent="arrow"]
 collision_layer = 4
@@ -21,4 +22,4 @@ collision_mask = 8
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ecp0a")
 
-[connection signal="area_entered" from="arrow/arrow_dmg_box" to="arrow" method="_on_arrow_dmg_box_area_entered"]
+[connection signal="area_entered" from="arrow/arrow_dmg_box" to="." method="_on_arrow_dmg_box_area_entered"]

@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-#TODO: make arrow move
+# TODO: Refactor the arrow movement to make use of velocity as well as move_and_slide
 
 var speed = 4
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,8 +11,6 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-
-
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://byo88a6vt4kfp"]
+[gd_scene load_steps=8 format=3 uid="uid://byo88a6vt4kfp"]
 
 [ext_resource type="Script" path="res://level_test.gd" id="1_3nvrj"]
-[ext_resource type="PackedScene" uid="uid://ffe0b05fkku7" path="res://Enemy/enemy.tscn" id="1_yy53l"]
 [ext_resource type="PackedScene" uid="uid://8oamxj7qnv3m" path="res://Player/player.tscn" id="3_ncqd0"]
 [ext_resource type="PackedScene" uid="uid://box8id3lrvrt8" path="res://Enemy/goblin_spawner.tscn" id="3_vuiov"]
 
@@ -12,15 +11,15 @@ colors = PackedColorArray(0.177235, 0.374755, 0.238343, 1, 0.876225, 0.740075, 0
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lhu4t"]
-width = 800
-height = 448
+width = 1600
+height = 896
 color_ramp = SubResource("Gradient_38ei3")
 noise = SubResource("FastNoiseLite_iiahc")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_s685e"]
-vertices = PackedVector2Array(790, 502, 10, 502, 10, 10, 790, 10)
+vertices = PackedVector2Array(1590, 886, 10, 886, 10, 10, 1590, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(800, 0, 800, 512, 0, 512, 0, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1600, 0, 1600, 896, 0, 896, 0, 0)])
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource("1_3nvrj")
@@ -35,24 +34,7 @@ texture = SubResource("NoiseTexture2D_lhu4t")
 navigation_polygon = SubResource("NavigationPolygon_s685e")
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("1_yy53l")]
-position = Vector2(144, 60)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("1_yy53l")]
-position = Vector2(254, 42)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("1_yy53l")]
-position = Vector2(358, 164)
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource("1_yy53l")]
-position = Vector2(238, 130)
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource("1_yy53l")]
-position = Vector2(153, 179)
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource("1_yy53l")]
-position = Vector2(67, 117)
+y_sort_enabled = true
 
 [node name="Spawners" type="Node2D" parent="."]
 
@@ -61,22 +43,47 @@ position = Vector2(398, -66)
 enemy_collection = NodePath("../../Enemies")
 
 [node name="GoblinSpawner2" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
-position = Vector2(901, 255)
+position = Vector2(835, -68)
+enemy_collection = NodePath("../../Enemies")
+
+[node name="GoblinSpawner8" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
+position = Vector2(1266, -68)
+enemy_collection = NodePath("../../Enemies")
+
+[node name="GoblinSpawner9" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
+position = Vector2(835, 963)
+enemy_collection = NodePath("../../Enemies")
+
+[node name="GoblinSpawner10" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
+position = Vector2(1266, 963)
 enemy_collection = NodePath("../../Enemies")
 
 [node name="GoblinSpawner3" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
-position = Vector2(400, 584)
+position = Vector2(400, 957)
 enemy_collection = NodePath("../../Enemies")
 
 [node name="GoblinSpawner4" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
 position = Vector2(-106, 225)
 enemy_collection = NodePath("../../Enemies")
 
+[node name="GoblinSpawner5" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
+position = Vector2(-106, 649)
+enemy_collection = NodePath("../../Enemies")
+
+[node name="GoblinSpawner6" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
+position = Vector2(1690, 225)
+enemy_collection = NodePath("../../Enemies")
+
+[node name="GoblinSpawner7" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
+position = Vector2(1690, 649)
+enemy_collection = NodePath("../../Enemies")
+
 [node name="player" parent="." instance=ExtResource("3_ncqd0")]
 position = Vector2(389, 252)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+process_callback = 0
+wait_time = 0.5
 one_shot = true
 autostart = true
 

@@ -26,7 +26,8 @@ func _physics_process(delta):
 func spawn_enemy():
 	if enemies.get_children().size() < max_enemies:
 		# Pick a random spawner to spawn an enemy
-		spawners.get_children().pick_random().spawn_enemy()
+		var spawner = spawners.get_children().pick_random()
+		spawner.spawn_enemy()
 
 
 func _on_timer_timeout():
