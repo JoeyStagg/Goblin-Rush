@@ -37,3 +37,4 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func _on_hitbox_area_entered(area):
 	queue_free()
+	

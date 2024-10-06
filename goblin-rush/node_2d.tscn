@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtg27xguwh0f4"]
+[gd_scene load_steps=4 format=3 uid="uid://dtg27xguwh0f4"]
 
 [ext_resource type="PackedScene" uid="uid://8oamxj7qnv3m" path="res://Player/player.tscn" id="1_xavt8"]
 [ext_resource type="PackedScene" uid="uid://cttpkvqnll8uv" path="res://Player/arrow.tscn" id="3_er5pr"]
+[ext_resource type="PackedScene" uid="uid://ffe0b05fkku7" path="res://Enemy/enemy.tscn" id="3_l83ht"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,4 +10,6 @@
 
 [node name="arrow" parent="." instance=ExtResource("3_er5pr")]
 position = Vector2(143, 30)
-script = null
+
+[node name="Enemy" parent="." instance=ExtResource("3_l83ht")]
+position = Vector2(96, 58)

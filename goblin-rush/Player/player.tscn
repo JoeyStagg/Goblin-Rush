@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://8oamxj7qnv3m"]
+[gd_scene load_steps=5 format=3 uid="uid://8oamxj7qnv3m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jfdes"]
 [ext_resource type="Texture2D" uid="uid://b2w2of880sqx7" path="res://textures/Guy.png" id="2_i1230"]
+[ext_resource type="PackedScene" uid="uid://cttpkvqnll8uv" path="res://Player/arrow.tscn" id="2_m4yp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v5k7"]
 size = Vector2(8, 15)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_jfdes")
+arrow = ExtResource("2_m4yp5")
 
 [node name="player_texture" type="Sprite2D" parent="."]
 texture_filter = 3
