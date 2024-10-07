@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
-# TODO: Limit the arrow shooting capabilities a bit so the arrows don't blot out the sun lol
+# TODO: 
 
 var speed = 300.0
 var health = 100.0	
 
+var mtn_dew_lvl = 0
+
 @export var arrow: PackedScene
+
+@onready var timer: Timer = $Timer
+@onready var sprite = $player_texture
 
 
 func you_should_kill_yourself_now():
@@ -21,8 +26,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		speed = 300.0
 		
-	look_at(get_global_mouse_position())
-		
+	if get_global_mouse_position().x > self.position.x:
+		sprite.set_flip_h(true)
+	else:
+		sprite.set_flip_h(false)
+
 	if Input.is_action_pressed("shoot"):
 		shoot()
 	
@@ -42,12 +50,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
-	health -= 33
-	print(health)
+	mtn_dew_lvl += 1
+	timer.wait_time -= (timer.wait_time * .1)
+	print(mtn_dew_lvl)
+	print(timer.get_wait_time())
 
 
 func shoot():
-	var inst = arrow.instantiate()
-	owner.add_child(inst)
-	inst.transform = get_node("player_texture").global_transform
+	if timer.is_stopped():
+		var inst = arrow.instantiate()
+		inst.transform = get_node("player_texture").global_transform
+		inst.direction = inst.position.direction_to(get_global_mouse_position())
+		owner.add_child(inst)
+		timer.start()

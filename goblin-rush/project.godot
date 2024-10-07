@@ -74,6 +74,7 @@ move_right={
 2d_physics/layer_3="player_dmg"
 2d_physics/layer_4="enemy_hit"
 2d_physics/layer_5="enemy_dmg"
+2d_physics/layer_6="item_hit"
 
 [rendering]
 
