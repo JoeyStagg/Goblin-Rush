@@ -14,3 +14,4 @@ func spawn_enemy():
 	
 	# Add the enemy node to the given collection
 	enemy_collection.add_child(new_enemy, true)
+	return new_enemy

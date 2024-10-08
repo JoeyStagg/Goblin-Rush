@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal enemy_killed
+
 @export var max_speed = 100 # Maximum speed goblins can move
 @export var acceleration = 60 # The amount the goblin's speed increases when chasing
 @export var friction = 50 # The amount the goblin's speed decreases when stopping
@@ -36,5 +38,5 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 
 func _on_hitbox_area_entered(area):
+	emit_signal("enemy_killed")
 	queue_free()
-	
