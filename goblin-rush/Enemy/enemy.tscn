@@ -41,5 +41,13 @@ collision_mask = 4
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_yp60m")
 
+[node name="dmg_box" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmg_box"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yp60m")
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

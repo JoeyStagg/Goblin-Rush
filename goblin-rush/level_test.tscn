@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://byo88a6vt4kfp"]
+[gd_scene load_steps=10 format=3 uid="uid://byo88a6vt4kfp"]
 
 [ext_resource type="Script" path="res://level_test.gd" id="1_3nvrj"]
+[ext_resource type="PackedScene" uid="uid://bxnu0lqnab0ck" path="res://Player/player_ui.tscn" id="2_i51rn"]
 [ext_resource type="PackedScene" uid="uid://8oamxj7qnv3m" path="res://Player/player.tscn" id="3_ncqd0"]
 [ext_resource type="PackedScene" uid="uid://box8id3lrvrt8" path="res://Enemy/goblin_spawner.tscn" id="3_vuiov"]
 [ext_resource type="PackedScene" uid="uid://dkg6hqys2xg0p" path="res://Player/game_ui.tscn" id="4_wk3y1"]
@@ -77,6 +78,8 @@ enemy_collection = NodePath("../../Enemies")
 [node name="GoblinSpawner7" parent="Spawners" node_paths=PackedStringArray("enemy_collection") instance=ExtResource("3_vuiov")]
 position = Vector2(1690, 649)
 enemy_collection = NodePath("../../Enemies")
+
+[node name="Player UI" parent="." instance=ExtResource("2_i51rn")]
 
 [node name="player" parent="." instance=ExtResource("3_ncqd0")]
 position = Vector2(389, 252)

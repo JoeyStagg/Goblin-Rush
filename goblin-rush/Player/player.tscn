@@ -17,7 +17,7 @@ texture = ExtResource("2_i1230")
 
 [node name="player_hitbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 32
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 shape = SubResource("RectangleShape2D_2v5k7")
@@ -29,4 +29,12 @@ process_callback = 0
 wait_time = 0.2
 one_shot = true
 
+[node name="item_pickup" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item_pickup"]
+shape = SubResource("RectangleShape2D_2v5k7")
+
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
+[connection signal="area_entered" from="item_pickup" to="." method="_on_item_pickup_area_entered"]

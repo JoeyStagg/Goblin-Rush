@@ -7,6 +7,7 @@ var round : int = 1
 var enemies_spawned = 0
 
 @onready var enemies = $Enemies
+@onready var player_ui: CanvasLayer = $"Player UI"
 @onready var player = $player
 @onready var spawners = $Spawners
 @onready var timer = $Timer
@@ -15,7 +16,7 @@ var enemies_spawned = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	player.emit_health.connect(player_ui._on_player_emit_health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

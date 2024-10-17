@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-# TODO: 
+# TODO: write signal
+
+signal emit_health (health: float)
 
 var speed = 300.0
 var health = 100.0	
@@ -11,6 +13,9 @@ var mtn_dew_lvl = 0
 
 @onready var timer: Timer = $Timer
 @onready var sprite = $player_texture
+
+func _ready() -> void:
+	emit_signal("emit_health", health)
 
 
 func you_should_kill_yourself_now():
@@ -52,10 +57,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
-	mtn_dew_lvl += 1
-	timer.wait_time -= (timer.wait_time * .1)
-	print(mtn_dew_lvl)
-	print(timer.get_wait_time())
+	health -= 10
+	emit_signal("emit_health", health)
+	
 
 
 func shoot():
@@ -65,3 +69,10 @@ func shoot():
 		inst.direction = inst.position.direction_to(get_global_mouse_position())
 		owner.add_child(inst)
 		timer.start()
+
+
+func _on_item_pickup_area_entered(area: Area2D) -> void:
+	mtn_dew_lvl += 1
+	timer.wait_time -= (timer.wait_time * .1)
+	print(mtn_dew_lvl)
+	print(timer.get_wait_time())

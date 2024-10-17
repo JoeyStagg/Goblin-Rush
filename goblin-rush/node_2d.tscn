@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtg27xguwh0f4"]
+[gd_scene load_steps=7 format=3 uid="uid://dtg27xguwh0f4"]
 
+[ext_resource type="Script" path="res://node_2d.gd" id="1_2vxft"]
 [ext_resource type="PackedScene" uid="uid://8oamxj7qnv3m" path="res://Player/player.tscn" id="1_xavt8"]
 [ext_resource type="PackedScene" uid="uid://cttpkvqnll8uv" path="res://Player/arrow.tscn" id="3_er5pr"]
 [ext_resource type="PackedScene" uid="uid://ffe0b05fkku7" path="res://Enemy/enemy.tscn" id="3_l83ht"]
 [ext_resource type="PackedScene" uid="uid://6mjtm77i4dl1" path="res://Item/item.tscn" id="4_ggjyf"]
+[ext_resource type="PackedScene" uid="uid://bxnu0lqnab0ck" path="res://Player/player_ui.tscn" id="6_t3gnb"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_2vxft")
+
+[node name="Player UI" parent="." instance=ExtResource("6_t3gnb")]
 
 [node name="player" parent="." instance=ExtResource("1_xavt8")]
 
@@ -26,3 +31,5 @@ position = Vector2(39, 61)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("4_ggjyf")]
 position = Vector2(64, 59)
+
+[connection signal="emit_health" from="player" to="Player UI" method="_on_player_emit_health"]
